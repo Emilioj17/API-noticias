@@ -18,7 +18,7 @@ const Contenedor = styled.div`
 `
 
 function App() {
-  const [noticias, setNoticias]= useState([])
+  const [noticias, setNoticias]= useState(["general"])
   const opciones = [
     { value: 'general', label: 'General' },
     { value: 'business', label: 'Negocios' },
@@ -31,8 +31,13 @@ function App() {
 
   const [estado, Retorno] = useInput("Eligue Tipo de Noticia", "everything", opciones);
 
-  const OnSubmit = () => {
-    
+  const APIKEY = "2ea928eac9ce4028bdb66320d4882d30";
+
+  const OnSubmit = async () => {
+    const response = await fetch(`https://newsapi.org/v2/top-headlines?country=us&category=${estado}&apiKey=${APIKEY}`);
+    const data = await response.json();
+    setNoticias(data.articles);
+    console.log(data.articles);
   }
 
   return (
@@ -40,9 +45,9 @@ function App() {
       <h1>Generador de Noticias</h1>
       <Retorno />
       <div>
-          <input type="button" value="Buscar Noticias" />
+        <input type="button" value="Buscar Noticias" onClick={(e)=>OnSubmit(e)}/>
       </div>
-      <Noticias />
+      <Noticias noticias={noticias}/>
     </Contenedor>
   );
 }

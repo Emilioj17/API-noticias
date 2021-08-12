@@ -12,6 +12,7 @@ const Input = (label, estadoInicial, opciones) => {
         <div>
             <label>{label}</label>
             <select>
+                <option>Eligue una Opción</option>
                 {opciones.map(opcion => (
                     <option key={opcion.value} value={opcion.value} onClick={(e)=>OnClick(e)}>{opcion.label}</option>
                 ))}
