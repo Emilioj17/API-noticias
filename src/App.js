@@ -5,7 +5,7 @@ import Noticias from "./component/Noticias";
 
 const Contenedor = styled.div`
   background-color: #1A5276;
-  height: 100vh;
+  height: 100%;
   widht: 100vw;
   text-align:center;
   color: white;
@@ -18,7 +18,7 @@ const Contenedor = styled.div`
 `
 
 function App() {
-  const [noticias, setNoticias]= useState(["general"])
+  const [noticias, setNoticias]= useState([])
   const opciones = [
     { value: 'general', label: 'General' },
     { value: 'business', label: 'Negocios' },
@@ -47,7 +47,7 @@ function App() {
       <div>
         <input type="button" value="Buscar Noticias" onClick={(e)=>OnSubmit(e)}/>
       </div>
-      <Noticias noticias={noticias}/>
+      {(noticias) ? <Noticias noticias={noticias} /> : "Cargando..."}
     </Contenedor>
   );
 }
