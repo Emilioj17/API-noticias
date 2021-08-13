@@ -6,7 +6,7 @@ import Noticias from "./component/Noticias";
 const Contenedor = styled.div`
   background-color: #1A5276;
   height: 100%;
-  widht: 100vw;
+  width: 100vw;
   text-align:center;
   color: white;
   display: grid;
